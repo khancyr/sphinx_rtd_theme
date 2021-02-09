@@ -6,6 +6,17 @@
 {% set suffix = source_suffix %}
 {% endif %}
 
+{% if not pagename=='index' and not pagename=='docs/parameters' %}
+ {% set display_github = True %}
+ {% set github_user = 'ArduPilot' %}
+ {% set github_repo = 'ardupilot_wiki' %}
+ {% set github_version = 'master' %}
+ {% set conf_py_path = '/'+shorttitle+'/source/' %}
+ {% if pagename | truncate(12, end='') == 'docs/common-' %}
+   {% set conf_py_path = '/common/source/' %}
+ {% endif %}
+{% endif %}
+
 {% if meta is defined and meta is not none %}
 {% set check_meta = True %}
 {% else %}
